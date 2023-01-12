@@ -11,7 +11,8 @@
 
     <script>
 
-        const ws = new WebSocket("ws://192.168.4.2:3000");
+        //const ws = new WebSocket("ws://192.168.0.101:3000"); // http
+        const ws = new WebSocket("wss://ws-server-client-esp-js.onrender.com:443"); // https
 
         ws.addEventListener("open", () => {
             console.log("Connected to server");
