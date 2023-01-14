@@ -22,14 +22,17 @@ void setup() {
 void loop() {
   
   if (!ws.isConnected()) {
-    ws.connect("ws-server-client-esp-js.onrender.com", "/", 443);
+    Serial.println("Connectting...");
+    ws.connect("servidor-nodejs.onrender.com", "/", 443);    
   } else {
     ws.send("hello");
+    Serial.println("Conectedo.");
 
     String msg;
     if (ws.getMessage(msg)) {
       Serial.println(msg);
     }
   }
+  
   delay(500);
 }
