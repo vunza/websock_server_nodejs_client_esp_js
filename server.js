@@ -15,12 +15,14 @@ wss.on("connection", ws => {
     // sending message
     ws.on("message", data => {
         console.log(`Client has sent us: ${data}`);
-        ws.send(`A mensagem: "${data}" foi recebida com sucesso!`);
+        ws.send(`A mensagem: ${data} foi recebida com sucesso!`);        
     });
+
     // handling what to do when clients disconnects from server
     ws.on("close", () => {
-        console.log("the client has disconnected");
+        console.log("Cliente disconectado!");
     });
+
     // handling client connection error
     ws.onerror = function () {
         console.log("Some Error occurred")
