@@ -10,12 +10,16 @@ const wss = new WebSocketServer.Server({ port: app.get('porto') })
 
  
 // Creating connection using websocket
-wss.on("connection", ws => {
+wss.on("connection", (ws) => {
     console.log("new client connected");
+    
     // sending message
-    ws.on("message", data => {
+    ws.on("message", (data) => {
         console.log(`Client has sent us: ${data}`);
-        ws.send(`A mensagem: ${data} foi recebida com sucesso!`);        
+        
+        wss.clients.forEach(client => {
+            client.send(`A mensagem: "${data}" foi recebida com sucesso!`);
+        });       
     });
 
     // handling what to do when clients disconnects from server
